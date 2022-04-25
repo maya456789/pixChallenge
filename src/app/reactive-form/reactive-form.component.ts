@@ -11,14 +11,14 @@ import { ActivatedRoute,ParamMap,Router } from '@angular/router';//Use queryPara
 })
 export class ReactiveFormComponent implements OnInit {
 
- formData:FormGroup;
+ public formData:FormGroup;
  otpData:FormGroup;
  name:string;
- isSubmitted=false;
- isDisabled=true;//This variable used for enabling and disablind resendOtp button.
- isFooter=true;//I have used bootstrap card ,so at footer of card shows otp submition field after successful call of get otp api.
- isBottom=true;//This variable used to show or hide the error "Please try again after an hour"
- count:number=0; //It is used to count resend otp link click.
+ public isSubmitted=false;
+ public isDisabled=true;//This variable used for enabling and disablind resendOtp button.
+ public isFooter=true;//I have used bootstrap card ,so at footer of card shows otp submition field after successful call of get otp api.
+ public isBottom=true;//This variable used to show or hide the error "Please try again after an hour"
+ public count:number=0; //It is used to count resend otp link click.
 
   constructor(private fbuild:FormBuilder,private $servic:ApiService,private $thnx:Router,private $arot:ActivatedRoute) {
  
@@ -28,7 +28,7 @@ export class ReactiveFormComponent implements OnInit {
       fullname:['',Validators.compose([Validators.required,Validators.maxLength(140)])],
       email:['',Validators.compose([Validators.required,Validators.maxLength(255),Validators.pattern(/^[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/)
           ])],
-      mobile:['',Validators.compose([Validators.required,Validators.maxLength(10),Validators.minLength(10)])],
+      mobile:['',Validators.compose([Validators.required,Validators.maxLength(10),Validators.minLength(10),Validators.pattern("^[0-9]+$")])],
       
     });
 

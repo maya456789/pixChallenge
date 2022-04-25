@@ -8,8 +8,9 @@ import { ActivatedRoute,ParamMap, Router } from '@angular/router';
 })
 export class ThanxFormComponent implements OnInit {
   
+  public userDetails:any;
   nmae:string;
-   sub:any; 
+  sub:any; 
   constructor(private arout:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
@@ -19,7 +20,20 @@ export class ThanxFormComponent implements OnInit {
        this.nmae=params['name'] ;
   
      })
+
+     const storage=localStorage.getItem("google_auth");
+
+     if(storage){
+       this.userDetails=JSON.parse(storage);
+     }else{
+       this.signOut();
+     }
     
+  }
+
+  signOut():void{
+    localStorage.removeItem('google_auth');
+    this.router.navigate(['/login']);
   }
 
 }

@@ -1,0 +1,15 @@
+.google-sign-in{
+    background-color:white;
+    border:1px solid blue;
+    padding:10px 30px;
+}
+
+button{
+    align-items: center;
+    margin-left:450px;
+}
+
+button:hover{
+    color: lightblue;
+    background-color: black;
+}

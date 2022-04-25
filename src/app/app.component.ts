@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Ang13';
+ public title:string = 'Ang13';
 
 
  constructor(private $router:Router){
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
    }
 
    ngOnInit(): void {
-       this.$router.navigate(['/verify']);
+       this.$router.navigate(['/login']);
    }
    
 

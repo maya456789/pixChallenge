@@ -62,7 +62,12 @@
                                     <div *ngIf="formData.controls['mobile'].errors['minlength']">
                                           Number should be 10.
                                     </div>
-                                    
+                                    <div *ngIf="formData.controls['mobile'].errors['maxlength']">
+                                          Number should not be more than 10.    
+                                    </div>
+                                    <div *ngIf="formData.controls['mobile'].errors['pattern']" >
+                                        Only digits are allowed.
+                                    </div>
                                  </div>
                                </div>
                               </div>
