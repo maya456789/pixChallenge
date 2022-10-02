@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormControl,FormBuilder,Validators } from '@angular/forms';
+import { FormGroup,FormControl,FormBuilder,Validators,AbstractControl, ValidatorFn, } from '@angular/forms';
 import {CityValidator} from '../cityvalidator';//This ts file is used for blanck spaces validation.
 import { ApiService } from '../api.service'; // This service contail all rest api calls.
 import { ActivatedRoute,ParamMap,Router } from '@angular/router';//Use queryParam for sending full username.
@@ -29,7 +29,8 @@ export class ReactiveFormComponent implements OnInit {
       email:['',Validators.compose([Validators.required,Validators.maxLength(255),Validators.pattern(/^[\w]{1,}[\w.+-]{0,}@[\w-]{1,}([.][a-zA-Z]{2,}|[.][\w-]{2,}[.][a-zA-Z]{2,})$/)
           ])],
       mobile:['',Validators.compose([Validators.required,Validators.maxLength(10),Validators.minLength(10),Validators.pattern("^[0-9]+$")])],
-      
+      pw: fbuild.control('', [Validators.required]),
+      check: fbuild.control('', [Validators.required]),
     });
 
      this.otpData=this.fbuild.group({
@@ -38,8 +39,14 @@ export class ReactiveFormComponent implements OnInit {
       
      })
 
+     this.formData.addValidators(
+      matchValidator(this.formData.get('pw'), this.formData.get('check'))
+    );
     
    }
+
+  
+  
 
   ngOnInit(): void {
     // this.callApi();
@@ -107,4 +114,15 @@ export class ReactiveFormComponent implements OnInit {
       }
      
     }
+}
+
+function matchValidator(
+  control: AbstractControl,
+  controlTwo: AbstractControl
+): ValidatorFn {
+  return () => {
+    if (control.value !== controlTwo.value)
+      return { match_error: 'Value does not match' };
+    return null;
+  };
 }

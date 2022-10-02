@@ -4,12 +4,12 @@
     <div class="row">
          <div class="col-8">
             <div class="card">
-               <div class="card-header bg-primary text-white">
+               <div class="card-header bg-primary text-white ">
                   Registration Form.
                </div>
-               <div class="card-body bg-dark text-white">
+               <div class="card-body bg-dark text-white ">
                    <form [formGroup]="formData" (ngSubmit)="addData(formData)">
-                      <div class="row row-cols-1">
+                      <div class="row row-cols-1 ">
                          <div class="col-md-8">
                            <input type="text" formControlName="panNumber" class="form-control" placeholder="Enter PanNo">
                            <div *ngIf="isSubmitted && formData.controls['panNumber'].errors && !formData.valid">
@@ -51,6 +51,17 @@
                               <small *ngIf="formData.controls['email'].errors['pattern']" >Please provide a valid email address</small>
                           </div>
                           </div><br><br>
+                          <div class="col-md-8">
+                           <input type="password" formControlName="pw" class="form-control" placeholder="Enter password">
+                          
+                          </div><br><br>
+                          <div class="col-md-8">
+                           <input type="password" formControlName="check" class="form-control" placeholder="Enter confirm password">
+                           <div *ngIf="formData.errors && isSubmitted  && !formData.valid">
+                              {{ formData.errors | json }}
+                          </div>
+                          
+                          </div><br/><br>
                           <div class="col-md-8">
                              <div class="row">
                                 <div class="col-2"><input type="text" placeholder="+91" class="form-control" readonly></div>

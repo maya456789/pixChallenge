@@ -11,13 +11,22 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
  public title:string = 'Ang13';
 
+  name:any="Yogesh edaru";
+  temp:any; length:any;
+
+ 
+
 
  constructor(private $router:Router){
-   
+    
    }
 
    ngOnInit(): void {
-       this.$router.navigate(['/login']);
+
+     //  this.$router.navigate(['/login']);
+      
+     
+    
    }
    
 

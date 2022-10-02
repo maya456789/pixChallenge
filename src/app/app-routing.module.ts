@@ -9,7 +9,7 @@ const routes: Routes = [
 
   { path:'login', component:LoginComponent},
   
-  { path:'verify',component:ReactiveFormComponent},
+  { path:'',component:ReactiveFormComponent},
 
 
   { path:'thanxuser',component:ThanxFormComponent},
